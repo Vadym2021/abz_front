@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Route, Routes} from 'react-router-dom';
+import {HeaderPage} from "./page/header/HeaderPage";
+import {Register} from "./components/Register/Register";
+import {LayoutPage} from "./page/layout/LayoutPage";
+import {UserList} from "./components/UserList/UserList";
+import {PositionsList} from "./components/UserPositions/PositionsList";
+import {User} from "./components/User/User";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+
+const App = () => {
+    return (
+
+        <div>
+            <HeaderPage/>
+            <Routes><Route path={'register'} element={<Register/>}/>
+                <Route path={'/'} element={<LayoutPage/>}/>
+                <Route path={'users'} element={<UserList/>}/>
+                <Route path={'users/:id'} element={<User/>}/>
+                <Route path={'positions'} element={<PositionsList/>}/>
+            </Routes>
+        </div>
+
+    );
+};
 
 export default App;
